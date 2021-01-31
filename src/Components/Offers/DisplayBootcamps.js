@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
+//material ui
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 class ListBootcamps extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			loading: false,
-			currentBootcamp: {},
+
 			bootcamps: [],
 		};
 	}
@@ -34,30 +37,27 @@ class ListBootcamps extends Component {
 	}
 
 	render() {
-		const { loading, currentBootcamp, bootcamps } = this.state;
+		const { loading, bootcamps } = this.state;
 
 		return (
 			<div>
 				<h1>All Bootcamps</h1>
-				<BootcampsList
-					currentBootcamp={currentBootcamp}
-					bootcamps={bootcamps}
-				/>
+				<BootcampsList bootcamps={bootcamps} />
 			</div>
 		);
 	}
 }
 
-const BootcampsList = ({ currentBootcamp, bootcamps }) => {
+const BootcampsList = ({ bootcamps }) => {
 	return (
 		<div>
 			{bootcamps.map((bootcamp) => {
 				return (
-					<li key={bootcamp.bootcampId}>
+					<ListItem key={bootcamp.bootcampId}>
 						<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
-							{bootcamp.bootcampName}
+							<ListItemText>{bootcamp.bootcampName}</ListItemText>
 						</Link>
-					</li>
+					</ListItem>
 				);
 			})}
 		</div>

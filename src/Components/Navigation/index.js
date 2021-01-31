@@ -8,8 +8,9 @@ const Navigation = () => (
 			<li>
 				<Link to={ROUTES.LANDING}>Landing</Link>
 			</li>
+
 			<li>
-				<Link to={ROUTES.MAIN}>Home</Link>
+				<Link to={ROUTES.BOOTCAMPS}>Bootcamps</Link>
 			</li>
 		</ul>
 	</div>

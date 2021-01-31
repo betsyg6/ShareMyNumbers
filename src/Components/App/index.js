@@ -15,8 +15,8 @@ const App = () => {
 
 				<Route exact path={ROUTES.LANDING} component={Landing} />
 				<Route path={ROUTES.MAIN} component={Main} />
-				<Route path='/bootcamps/:bootcampId' component={ListOffers} />
-				<Route exact path='/bootcamps' component={BootcampsMain} />
+				<Route path={ROUTES.BOOTCAMP} component={ListOffers} />
+				<Route exact path={ROUTES.BOOTCAMPS} component={BootcampsMain} />
 			</div>
 		</Router>
 	);

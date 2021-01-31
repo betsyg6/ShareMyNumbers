@@ -7,7 +7,7 @@ class ListOffers extends Component {
 		super(props);
 		this.state = {
 			loading: false,
-			offers: [{ offerName: 'No Offers Yet!', id: 1 }],
+			offers: [{ offerName: 'No Offers Yet!', offerId: 1 }],
 		};
 	}
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//this page might end up getting deleted
 const Main = () => {
-	return (
-		<div>
-			<Link to='/bootcamps'>View All Bootcamps</Link>
-		</div>
-	);
+	return <div>Main Page</div>;
 };
 
 export default Main;
