@@ -1,7 +1,12 @@
 import React from 'react';
+import AddBootcamp from '../Offers/AddBootcamp';
 
 const Main = () => {
-	return <div>Main page!</div>;
+	return (
+		<div>
+			<AddBootcamp />
+		</div>
+	);
 };
 
 export default Main;
