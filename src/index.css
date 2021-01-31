@@ -12,18 +12,6 @@ code {
 		monospace;
 }
 
-.nav {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	padding: 5px;
-	text-decoration: none;
-	color: black;
-	justify-content: space-evenly;
-	font-size: 15px;
-	margin: 1em;
-}
-
 ul {
 	list-style-type: none;
 }

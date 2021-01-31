@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
+import { Button } from 'react-bootstrap';
 
 const INITIAL_STATE = {
 	companyName: '',
@@ -16,12 +17,16 @@ const INITIAL_STATE = {
 	comments: '',
 };
 
-const AddOffer = () => (
-	<div>
-		<h1>Add an Offer</h1>
-		<AddOfferForm />
-	</div>
-);
+const AddOffer = () => {
+	const [form, openForm] = useState(false);
+
+	return (
+		<div>
+			<Button onClick={() => openForm(!form)}>Add an Offer</Button>
+			{form && <AddOfferForm />}
+		</div>
+	);
+};
 
 class AddOfferFormBase extends Component {
 	constructor(props) {

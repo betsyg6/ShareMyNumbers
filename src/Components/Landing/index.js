@@ -1,5 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
+import * as ROUTES from '../../Constants/routes';
 
 const Landing = () => {
 	return (
@@ -10,7 +11,9 @@ const Landing = () => {
 				anonymously.
 			</p>
 			<p>
-				<Button variant='primary'>Enter</Button>
+				<Button href={ROUTES.BOOTCAMPS} variant='primary'>
+					Enter
+				</Button>
 			</p>
 		</Jumbotron>
 	);
