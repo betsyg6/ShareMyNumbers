@@ -24,7 +24,7 @@ class Firebase {
 	bootcamps = () => this.db.ref(`bootcamps`);
 
 	//offer api
-	offersInClass = (bootcampId) => this.db.ref(`offers/${bootcampId}`);
+	offers = (bootcampId) => this.db.ref(`offers/${bootcampId}`);
 	addOffer = (bootcampId) => this.db.ref(`offers/${bootcampId}`);
 }
 

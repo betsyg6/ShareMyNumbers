@@ -31,15 +31,14 @@ class AddBootcampFormBase extends Component {
 		const { bootcampName } = this.state;
 		this.props.firebase
 			.bootcamps()
-			.set({ bootcampName })
+			.push({ bootcampName })
 			.then(() => {
-				console.log('hiiiii');
+				this.setState({ bootcampName: '' });
 			})
 			.catch((error) => console.log(error));
 	};
 
 	render() {
-		console.log('props', this.props);
 		return (
 			<form onSubmit={this.onSubmit}>
 				<label>Class Name</label>
