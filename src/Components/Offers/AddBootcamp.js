@@ -2,13 +2,36 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
+//material ui
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
 
-const AddBootcamp = () => (
-	<div>
-		<h1>Add a Bootcamp Cohort</h1>
-		<AddBootcampForm />
-	</div>
-);
+const AddBootcamp = () => {
+	const [open, setOpen] = React.useState(false);
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	return (
+		<div>
+			<Button variant='outlined' color='primary' onClick={handleClickOpen}>
+				Add a Bootcamp Cohort
+			</Button>
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				aria-labelledby='form-dialog-title'
+			>
+				<AddBootcampForm />
+			</Dialog>
+		</div>
+	);
+};
 
 class AddBootcampFormBase extends Component {
 	constructor(props) {
