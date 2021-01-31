@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 
 const AddBootcamp = () => (
 	<div>
+		<h1>Add a Bootcamp Cohort</h1>
 		<AddBootcampForm />
 	</div>
 );
@@ -49,6 +50,7 @@ class AddBootcampFormBase extends Component {
 					onChange={this.handleChange}
 					required
 				/>
+				<br />
 				<label>Class Name</label>
 				<input
 					type='text'
@@ -57,6 +59,7 @@ class AddBootcampFormBase extends Component {
 					onChange={this.handleChange}
 					required
 				/>
+				<br />
 				<label>Graduation Date</label>
 				<input
 					type='month'
