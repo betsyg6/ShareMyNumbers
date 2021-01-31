@@ -39,7 +39,7 @@ class AddBootcampFormBase extends Component {
 	render() {
 		return (
 			<form onSubmit={this.onSubmit}>
-				<label>Class Name</label>
+				<label>Bootcamp Class Name</label>
 				<input
 					type='text'
 					name='bootcampName'

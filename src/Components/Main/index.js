@@ -1,12 +1,10 @@
 import React from 'react';
-import AddBootcamp from '../Offers/AddBootcamp';
-import DisplayBootcamps from '../Offers/DisplayBootcamps';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
 	return (
 		<div>
-			<AddBootcamp />
-			<DisplayBootcamps />
+			<Link to='/bootcamps'>View All Bootcamps</Link>
 		</div>
 	);
 };

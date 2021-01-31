@@ -7,7 +7,7 @@ import Firebase, { FirebaseContext } from './Components/Firebase';
 
 ReactDOM.render(
 	<FirebaseContext.Provider value={new Firebase()}>
-		<div className='bg'>
+		<div>
 			<App />
 		</div>
 	</FirebaseContext.Provider>,

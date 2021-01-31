@@ -7,7 +7,7 @@ class ListOffers extends Component {
 		super(props);
 		this.state = {
 			loading: false,
-			offers: [{ offerName: 'No Offers Yet!' }],
+			offers: [{ offerName: 'No Offers Yet!', id: 1 }],
 		};
 	}
 
@@ -17,16 +17,17 @@ class ListOffers extends Component {
 		const id = this.props.match.params.bootcampId;
 		this.props.firebase.offers(id).on('value', (snapshot) => {
 			const offersObj = snapshot.val();
+			if (offersObj) {
+				const offersList = Object.keys(offersObj).map((key) => ({
+					...offersObj[key],
+					offerId: key,
+				}));
 
-			const offersList = Object.keys(offersObj).map((key) => ({
-				...offersObj[key],
-				offerId: key,
-			}));
-
-			this.setState({
-				offers: offersList,
-				loading: false,
-			});
+				this.setState({
+					offers: offersList,
+					loading: false,
+				});
+			}
 		});
 	}
 
@@ -50,9 +51,10 @@ class ListOffers extends Component {
 const OffersList = ({ offers }) => {
 	return (
 		<div>
-			{offers.map((offer) => {
-				return <li key={offer.offerId}>{offer.offerName}</li>;
-			})}
+			{offers.length &&
+				offers.map((offer) => {
+					return <li key={offer.offerId}>{offer.offerName}</li>;
+				})}
 		</div>
 	);
 };

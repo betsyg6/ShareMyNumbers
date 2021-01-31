@@ -5,6 +5,7 @@ import Landing from '../Landing';
 import Main from '../Main';
 import * as ROUTES from '../../Constants/routes';
 import ListOffers from '../Offers/DisplayOffers';
+import BootcampsMain from '../Offers/BootcampsMain';
 
 const App = () => {
 	return (
@@ -15,6 +16,7 @@ const App = () => {
 				<Route exact path={ROUTES.LANDING} component={Landing} />
 				<Route path={ROUTES.MAIN} component={Main} />
 				<Route path='/bootcamps/:bootcampId' component={ListOffers} />
+				<Route exact path='/bootcamps' component={BootcampsMain} />
 			</div>
 		</Router>
 	);
