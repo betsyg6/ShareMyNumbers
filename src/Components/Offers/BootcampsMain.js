@@ -1,13 +1,14 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import AddBootcamp from '../Offers/AddBootcamp';
 import DisplayBootcamps from '../Offers/DisplayBootcamps';
 
 const BootcampsMain = () => {
 	return (
-		<div>
+		<Container className='main'>
 			<DisplayBootcamps />
 			<AddBootcamp />
-		</div>
+		</Container>
 	);
 };
 

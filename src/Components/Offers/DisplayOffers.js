@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
+import { Container } from 'react-bootstrap';
 
 class ListOffers extends Component {
 	constructor(props) {
@@ -39,17 +40,16 @@ class ListOffers extends Component {
 		const { loading, offers } = this.state;
 
 		return (
-			<div>
+			<Container>
 				<h1>All offers</h1>
 				<OffersList offers={offers} />
 				<AddOffer />
-			</div>
+			</Container>
 		);
 	}
 }
 
 const OffersList = ({ offers }) => {
-	console.log('offers', offers);
 	return (
 		<div>
 			{offers.length &&
