@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
-//material ui
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { Spinner } from 'react-bootstrap';
 
 class ListBootcamps extends Component {
 	constructor(props) {
@@ -43,7 +41,7 @@ class ListBootcamps extends Component {
 
 		return (
 			<div>
-				<h1>All Bootcamps</h1>
+				<h2>All Bootcamps</h2>
 				<BootcampsList bootcamps={bootcamps} />
 			</div>
 		);
@@ -53,16 +51,19 @@ class ListBootcamps extends Component {
 const BootcampsList = ({ bootcamps }) => {
 	return (
 		<div>
-			{bootcamps.length &&
+			{bootcamps.length ? (
 				bootcamps.map((bootcamp) => {
 					return (
-						<ListItem key={bootcamp.bootcampId}>
+						<li key={bootcamp.bootcampId}>
 							<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
-								<ListItemText>{bootcamp.bootcampName}</ListItemText>
+								{bootcamp.bootcampName}
 							</Link>
-						</ListItem>
+						</li>
 					);
-				})}
+				})
+			) : (
+				<Spinner animation='border' variant='primary' />
+			)}
 		</div>
 	);
 };

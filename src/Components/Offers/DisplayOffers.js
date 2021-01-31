@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 
 class ListOffers extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			loading: false,
-			offers: [{ offerName: 'No Offers Yet!', offerId: 1 }],
+			offers: [],
+			error: '',
 		};
 	}
 
@@ -28,6 +29,11 @@ class ListOffers extends Component {
 					offers: offersList,
 					loading: false,
 				});
+			} else {
+				this.setState({
+					loading: false,
+					error: 'No offers yet!',
+				});
 			}
 		});
 	}
@@ -37,25 +43,28 @@ class ListOffers extends Component {
 	}
 
 	render() {
-		const { loading, offers } = this.state;
+		const { offers, error } = this.state;
 
 		return (
 			<Container>
-				<h1>All offers</h1>
-				<OffersList offers={offers} />
+				<h2>All offers</h2>
+				<OffersList offers={offers} error={error} />
 				<AddOffer />
 			</Container>
 		);
 	}
 }
 
-const OffersList = ({ offers }) => {
+const OffersList = ({ offers, error }) => {
 	return (
 		<div>
-			{offers.length &&
+			{offers.length > 0 ? (
 				offers.map((offer) => {
 					return <li key={offer.offerId}>{offer.companyName}</li>;
-				})}
+				})
+			) : (
+				<p>{error}</p>
+			)}
 		</div>
 	);
 };
