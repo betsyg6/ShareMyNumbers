@@ -6,6 +6,8 @@ As coding bootcamp graduates and women/nonbinary people, we've entered a new ind
 
 Share My Numbers is an app that allows coding bootcamp graduates to share their offers anonymously. To create this app, I used React and Firebase.
 
+Check out the site (still in progress) [here](https://share-my-numbers.herokuapp.com/)!
+
 # Downloading Instructions
 
 ```
