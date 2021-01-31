@@ -14,6 +14,8 @@ class AddBootcampFormBase extends Component {
 		super(props);
 		this.state = {
 			bootcampName: '',
+			className: '',
+			graduationDate: '',
 		};
 	}
 
@@ -26,12 +28,12 @@ class AddBootcampFormBase extends Component {
 	onSubmit = (event) => {
 		event.preventDefault();
 
-		const { bootcampName } = this.state;
+		const { bootcampName, className, graduationDate } = this.state;
 		this.props.firebase
 			.bootcamps()
-			.push({ bootcampName })
+			.push({ bootcampName, className, graduationDate })
 			.then(() => {
-				this.setState({ bootcampName: '' });
+				this.setState({ bootcampName: '', className: '', graduationDate: '' });
 			})
 			.catch((error) => console.log(error));
 	};
@@ -39,7 +41,7 @@ class AddBootcampFormBase extends Component {
 	render() {
 		return (
 			<form onSubmit={this.onSubmit}>
-				<label>Bootcamp Class Name</label>
+				<label>Bootcamp Name</label>
 				<input
 					type='text'
 					name='bootcampName'
@@ -47,6 +49,23 @@ class AddBootcampFormBase extends Component {
 					onChange={this.handleChange}
 					required
 				/>
+				<label>Class Name</label>
+				<input
+					type='text'
+					name='className'
+					value={this.state.className}
+					onChange={this.handleChange}
+					required
+				/>
+				<label>Graduation Date</label>
+				<input
+					type='month'
+					name='graduationDate'
+					value={this.state.graduationDate}
+					onChange={this.handleChange}
+					required
+				/>
+
 				<button type='submit'>Submit</button>
 			</form>
 		);

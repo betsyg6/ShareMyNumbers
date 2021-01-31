@@ -20,15 +20,17 @@ class ListBootcamps extends Component {
 
 		this.props.firebase.bootcamps().on('value', (snapshot) => {
 			const bootcampsObj = snapshot.val();
-			const bootcampsList = Object.keys(bootcampsObj).map((key) => ({
-				...bootcampsObj[key],
-				bootcampId: key,
-			}));
+			if (bootcampsObj) {
+				const bootcampsList = Object.keys(bootcampsObj).map((key) => ({
+					...bootcampsObj[key],
+					bootcampId: key,
+				}));
 
-			this.setState({
-				bootcamps: bootcampsList,
-				loading: false,
-			});
+				this.setState({
+					bootcamps: bootcampsList,
+					loading: false,
+				});
+			}
 		});
 	}
 
@@ -51,15 +53,16 @@ class ListBootcamps extends Component {
 const BootcampsList = ({ bootcamps }) => {
 	return (
 		<div>
-			{bootcamps.map((bootcamp) => {
-				return (
-					<ListItem key={bootcamp.bootcampId}>
-						<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
-							<ListItemText>{bootcamp.bootcampName}</ListItemText>
-						</Link>
-					</ListItem>
-				);
-			})}
+			{bootcamps.length &&
+				bootcamps.map((bootcamp) => {
+					return (
+						<ListItem key={bootcamp.bootcampId}>
+							<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
+								<ListItemText>{bootcamp.bootcampName}</ListItemText>
+							</Link>
+						</ListItem>
+					);
+				})}
 		</div>
 	);
 };

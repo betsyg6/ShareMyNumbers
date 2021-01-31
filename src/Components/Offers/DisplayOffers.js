@@ -49,11 +49,12 @@ class ListOffers extends Component {
 }
 
 const OffersList = ({ offers }) => {
+	console.log('offers', offers);
 	return (
 		<div>
 			{offers.length &&
 				offers.map((offer) => {
-					return <li key={offer.offerId}>{offer.offerName}</li>;
+					return <li key={offer.offerId}>{offer.companyName}</li>;
 				})}
 		</div>
 	);
