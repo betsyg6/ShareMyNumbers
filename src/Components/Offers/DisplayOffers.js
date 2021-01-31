@@ -17,13 +17,12 @@ class ListOffers extends Component {
 		const id = this.props.match.params.bootcampId;
 		this.props.firebase.offers(id).on('value', (snapshot) => {
 			const offersObj = snapshot.val();
-			console.log('offersObj', offersObj);
+
 			const offersList = Object.keys(offersObj).map((key) => ({
 				...offersObj[key],
 				offerId: key,
 			}));
 
-			console.log('offers', offersList);
 			this.setState({
 				offers: offersList,
 				loading: false,
