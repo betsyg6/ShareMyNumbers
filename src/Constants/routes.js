@@ -1,3 +1,4 @@
-export const BOOTCAMPS = '/';
-export const CLASSES = '/:bootcampId';
-export const OFFERS = '/:bootcampId/:classId';
+export const BOOTCAMPS = '/bootcamps';
+export const CLASSES = '/bootcamps/:bootcampId';
+export const OFFERS = '/bootcamps/:bootcampId/:classId';
+export const HOME = '/';

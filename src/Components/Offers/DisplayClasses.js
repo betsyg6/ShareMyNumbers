@@ -59,7 +59,9 @@ const ClassesList = ({ classes, id }) => {
 			{classes.length ? (
 				classes.map((classObj) => (
 					<li key={classObj.classId}>
-						<Link to={`/${id}/${classObj.classId}`}>{classObj.className}</Link>
+						<Link to={`/bootcamps/${id}/${classObj.classId}`}>
+							{classObj.className}
+						</Link>
 					</li>
 				))
 			) : (

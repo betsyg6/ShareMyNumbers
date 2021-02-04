@@ -6,6 +6,9 @@ import { Nav } from 'react-bootstrap';
 const Navigation = () => (
 	<Nav>
 		<Nav.Item as='li'>
+			<Nav.Link href={ROUTES.HOME}>Home</Nav.Link>
+		</Nav.Item>
+		<Nav.Item as='li'>
 			<Nav.Link href={ROUTES.BOOTCAMPS}>Bootcamps</Nav.Link>
 		</Nav.Item>
 	</Nav>
