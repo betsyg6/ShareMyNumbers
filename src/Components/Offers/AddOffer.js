@@ -125,6 +125,7 @@ class AddOfferFormBase extends Component {
 					required
 				/>
 				<br />
+				{/* i wonder if theres a way to format this into money */}
 				<label>Bonus</label>
 				<input
 					type='text'
@@ -144,6 +145,7 @@ class AddOfferFormBase extends Component {
 					required
 				/>
 				<br />
+				{/* i wonder if there's a way to format this into money */}
 				<label>Equity</label>
 				<input
 					type='number'
