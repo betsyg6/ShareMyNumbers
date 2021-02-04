@@ -55,7 +55,7 @@ const BootcampsList = ({ bootcamps }) => {
 				bootcamps.map((bootcamp) => {
 					return (
 						<li key={bootcamp.bootcampId}>
-							<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
+							<Link to={`/${bootcamp.bootcampId}`}>
 								{bootcamp.bootcampName}
 							</Link>
 						</li>
