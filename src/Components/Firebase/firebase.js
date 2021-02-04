@@ -19,13 +19,16 @@ class Firebase {
 		this.db = app.database();
 	}
 
-	//bootcamp class api
+	//bootcamp api
 	bootcamp = (bootcampId) => this.db.ref(`bootcamps/${bootcampId}`);
 	bootcamps = () => this.db.ref(`bootcamps`);
 
+	//class api
+	classes = (bootcampId) => this.db.ref(`classes/${bootcampId}`);
+
 	//offer api
-	offers = (bootcampId) => this.db.ref(`offers/${bootcampId}`);
-	addOffer = (bootcampId) => this.db.ref(`offers/${bootcampId}`);
+	offers = (classId) => this.db.ref(`offers/${classId}`);
+	addOffer = (classId) => this.db.ref(`offers/${classId}`);
 }
 
 export default Firebase;

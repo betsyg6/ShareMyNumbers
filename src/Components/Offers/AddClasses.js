@@ -4,22 +4,23 @@ import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { Button } from 'react-bootstrap';
 
-const AddBootcamp = () => {
+const AddClass = () => {
 	const [form, openForm] = useState(false);
 
 	return (
 		<div>
-			<Button onClick={() => openForm(!form)}>Add a Bootcamp</Button>
-			{form && <AddBootcampForm />}
+			<Button onClick={() => openForm(!form)}>Add a Bootcamp Cohort</Button>
+			{form && <AddClassForm />}
 		</div>
 	);
 };
 
-class AddBootcampFormBase extends Component {
+class AddClassFormBase extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bootcampName: '',
+			className: '',
+			graduationDate: '',
 		};
 	}
 
@@ -32,12 +33,13 @@ class AddBootcampFormBase extends Component {
 	onSubmit = (event) => {
 		event.preventDefault();
 
-		const { bootcampName } = this.state;
+		const id = this.props.match.params.bootcampId;
+		const { className, graduationDate } = this.state;
 		this.props.firebase
-			.bootcamps()
-			.push({ bootcampName })
+			.classes(id)
+			.push({ className, graduationDate })
 			.then(() => {
-				this.setState({ bootcampName: '' });
+				this.setState({ className: '', graduationDate: '' });
 			})
 			.catch((error) => console.log(error));
 	};
@@ -45,15 +47,23 @@ class AddBootcampFormBase extends Component {
 	render() {
 		return (
 			<form onSubmit={this.onSubmit}>
-				<label>Bootcamp Name</label>
+				<label>Class Name</label>
 				<input
 					type='text'
-					name='bootcampName'
-					value={this.state.bootcampName}
+					name='className'
+					value={this.state.className}
 					onChange={this.handleChange}
 					required
 				/>
 				<br />
+				<label>Graduation Date</label>
+				<input
+					type='month'
+					name='graduationDate'
+					value={this.state.graduationDate}
+					onChange={this.handleChange}
+					required
+				/>
 
 				<button type='submit'>Submit</button>
 			</form>
@@ -61,6 +71,6 @@ class AddBootcampFormBase extends Component {
 	}
 }
 
-const AddBootcampForm = compose(withFirebase, withRouter)(AddBootcampFormBase);
-export default AddBootcamp;
-export { AddBootcampForm };
+const AddClassForm = compose(withFirebase, withRouter)(AddClassFormBase);
+export default AddClass;
+export { AddClassForm };

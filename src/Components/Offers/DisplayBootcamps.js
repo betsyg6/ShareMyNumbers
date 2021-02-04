@@ -8,7 +8,6 @@ class ListBootcamps extends Component {
 		super(props);
 		this.state = {
 			loading: false,
-
 			bootcamps: [],
 		};
 	}
@@ -46,6 +45,7 @@ class ListBootcamps extends Component {
 			</div>
 		);
 	}
+	ß;
 }
 
 const BootcampsList = ({ bootcamps }) => {

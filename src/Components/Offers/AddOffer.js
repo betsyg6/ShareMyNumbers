@@ -43,7 +43,7 @@ class AddOfferFormBase extends Component {
 	onSubmit = (event) => {
 		event.preventDefault();
 
-		const id = this.props.match.params.bootcampId;
+		const id = this.props.match.params.classId;
 		const {
 			companyName,
 			dateRecieved,

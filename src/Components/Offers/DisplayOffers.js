@@ -16,7 +16,7 @@ class ListOffers extends Component {
 	componentDidMount() {
 		this.setState({ loading: true });
 
-		const id = this.props.match.params.bootcampId;
+		const id = this.props.match.params.classId;
 		this.props.firebase.offers(id).on('value', (snapshot) => {
 			const offersObj = snapshot.val();
 			if (offersObj) {

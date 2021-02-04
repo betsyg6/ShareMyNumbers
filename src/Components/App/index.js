@@ -6,6 +6,7 @@ import Main from '../Main';
 import * as ROUTES from '../../Constants/routes';
 import ListOffers from '../Offers/DisplayOffers';
 import BootcampsMain from '../Offers/BootcampsMain';
+import ListClasses from '../Offers/DisplayClasses';
 
 const App = () => {
 	return (
@@ -16,7 +17,8 @@ const App = () => {
 
 				<Route exact path={ROUTES.LANDING} component={Landing} />
 				<Route path={ROUTES.MAIN} component={Main} />
-				<Route path={ROUTES.BOOTCAMP} component={ListOffers} />
+				<Route exact path={ROUTES.CLASSES} component={ListClasses} />
+				<Route path={ROUTES.OFFERS} component={ListOffers} />
 				<Route exact path={ROUTES.BOOTCAMPS} component={BootcampsMain} />
 			</div>
 		</Router>
