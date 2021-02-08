@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Container } from 'react-bootstrap';
 import AddClasses from './AddClasses';
 
 class ListClasses extends Component {
@@ -44,11 +44,11 @@ class ListClasses extends Component {
 		const { loading, classes, id } = this.state;
 
 		return (
-			<div>
+			<Container>
 				<h2>All classes</h2>
 				<ClassesList classes={classes} id={id} />
 				<AddClasses />
-			</div>
+			</Container>
 		);
 	}
 }

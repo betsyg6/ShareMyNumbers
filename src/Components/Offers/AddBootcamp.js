@@ -2,15 +2,21 @@ import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 const AddBootcamp = () => {
-	const [form, openForm] = useState(false);
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 	return (
 		<div>
-			<Button onClick={() => openForm(!form)}>Add a Bootcamp</Button>
-			{form && <AddBootcampForm />}
+			<Button onClick={handleShow}>Add a Bootcamp</Button>
+
+			<Modal show={show} onHide={handleClose}>
+				<AddBootcampForm />
+			</Modal>
 		</div>
 	);
 };

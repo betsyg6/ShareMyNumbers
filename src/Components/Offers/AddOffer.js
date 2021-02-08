@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 const INITIAL_STATE = {
 	companyName: '',
@@ -18,12 +18,18 @@ const INITIAL_STATE = {
 };
 
 const AddOffer = () => {
-	const [form, openForm] = useState(false);
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 	return (
 		<div>
-			<Button onClick={() => openForm(!form)}>Add an Offer</Button>
-			{form && <AddOfferForm />}
+			<Button onClick={handleShow}>Add an Offer</Button>
+
+			<Modal show={show} onHide={handleClose}>
+				<AddOfferForm />
+			</Modal>
 		</div>
 	);
 };
