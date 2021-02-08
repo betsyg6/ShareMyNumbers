@@ -2,7 +2,11 @@ import React from 'react';
 
 //this page might end up getting deleted
 const Main = () => {
-	return <div>Main Page</div>;
+	return (
+		<div>
+			<h1>Share my Numbers</h1>
+		</div>
+	);
 };
 
 export default Main;

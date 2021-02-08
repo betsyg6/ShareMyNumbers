@@ -12,7 +12,6 @@ const App = () => {
 	return (
 		<Router>
 			<div>
-				<h1>Share my Numbers</h1>
 				<Navigation />
 
 				<Route exact path={ROUTES.HOME} component={Main} />

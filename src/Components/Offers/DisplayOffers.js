@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container, Spinner, Table } from 'react-bootstrap';
 
 class ListOffers extends Component {
 	constructor(props) {
@@ -47,7 +47,6 @@ class ListOffers extends Component {
 
 		return (
 			<Container>
-				<h2>All offers</h2>
 				<OffersList offers={offers} error={error} />
 				<AddOffer />
 			</Container>
@@ -56,15 +55,61 @@ class ListOffers extends Component {
 }
 
 const OffersList = ({ offers, error }) => {
+	let keys = [
+		'Company Name',
+		'Date Recieved',
+		'Number of Months Job Searching',
+		'Years of Coding Experience',
+		'Base Salary',
+		'Bonus',
+		'Equity',
+		'Remote',
+		'Size of Company',
+		'Comments',
+	];
 	return (
-		<div>
-			{offers.length > 0 ? (
-				offers.map((offer) => {
-					return <li key={offer.offerId}>{offer.companyName}</li>;
-				})
-			) : (
-				<p>{error}</p>
-			)}
+		<div style={{ width: '90%', margin: '0 auto' }}>
+			<h2 style={{ textAlign: 'center', margin: '20px auto auto' }}>Offers</h2>
+
+			<Table
+				variant='default'
+				style={{ width: '100%', margin: '20px auto' }}
+				striped
+				bordered
+				responsive
+			>
+				<thead>
+					<tr>
+						{keys.map((heading) => {
+							return <td key={heading}>{heading}</td>;
+						})}
+					</tr>
+				</thead>
+				<tbody>
+					{offers.length > 0 ? (
+						offers.map((offer) => {
+							return (
+								<tr key={offer.offerId}>
+									<td>{offer.companyName}</td>
+									<td>{offer.dateRecieved}</td>
+									<td>{offer.numOfMonthsJobSearching}</td>
+									<td>{offer.yearsOfCodingExp}</td>
+									<td>{offer.baseSalary}</td>
+									<td>{offer.bonus}</td>
+									<td>{offer.equity}</td>
+									<td>{offer.remote}</td>
+									<td>{offer.sizeOfCompany}</td>
+									<td>{offer.comments}</td>
+								</tr>
+							);
+						})
+					) : (
+						<tr key='error'>
+							<td>{error}</td>
+						</tr>
+					)}
+				</tbody>
+			</Table>
 		</div>
 	);
 };
