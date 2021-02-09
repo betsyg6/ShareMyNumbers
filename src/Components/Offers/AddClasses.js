@@ -15,6 +15,7 @@ const AddClass = () => {
 			<Button onClick={handleShow}>Add a Class</Button>
 
 			<Modal show={show} onHide={handleClose}>
+				<Modal.Header>Add Class</Modal.Header>
 				<AddClassForm />
 			</Modal>
 		</div>
@@ -71,7 +72,9 @@ class AddClassFormBase extends Component {
 					required
 				/>
 
-				<button type='submit'>Submit</button>
+				<Modal.Footer>
+					<button type='submit'>Submit</button>
+				</Modal.Footer>
 			</form>
 		);
 	}

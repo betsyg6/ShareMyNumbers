@@ -15,6 +15,7 @@ const AddBootcamp = () => {
 			<Button onClick={handleShow}>Add a Bootcamp</Button>
 
 			<Modal show={show} onHide={handleClose}>
+				<Modal.Header>Add Bootcamp</Modal.Header>
 				<AddBootcampForm />
 			</Modal>
 		</div>
@@ -60,8 +61,9 @@ class AddBootcampFormBase extends Component {
 					required
 				/>
 				<br />
-
-				<button type='submit'>Submit</button>
+				<Modal.Footer>
+					<button type='submit'>Submit</button>
+				</Modal.Footer>
 			</form>
 		);
 	}

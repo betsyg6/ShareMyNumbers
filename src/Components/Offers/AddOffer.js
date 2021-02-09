@@ -28,6 +28,7 @@ const AddOffer = () => {
 			<Button onClick={handleShow}>Add an Offer</Button>
 
 			<Modal show={show} onHide={handleClose}>
+				<Modal.Header>Add Offer</Modal.Header>
 				<AddOfferForm />
 			</Modal>
 		</div>
@@ -179,7 +180,9 @@ class AddOfferFormBase extends Component {
 					onChange={this.handleChange}
 				/>
 				<br />
-				<button type='submit'>Submit</button>
+				<Modal.Footer>
+					<button type='submit'>Submit</button>
+				</Modal.Footer>
 			</form>
 		);
 	}

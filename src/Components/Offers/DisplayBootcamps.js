@@ -41,17 +41,17 @@ class ListBootcamps extends Component {
 		return (
 			<div>
 				<h2>All Bootcamps</h2>
-				<BootcampsList bootcamps={bootcamps} />
+				<BootcampsList bootcamps={bootcamps} loading={loading} />
 			</div>
 		);
 	}
 	ß;
 }
 
-const BootcampsList = ({ bootcamps }) => {
+const BootcampsList = ({ bootcamps, loading }) => {
 	return (
 		<div>
-			{bootcamps.length ? (
+			{bootcamps.length && !loading ? (
 				bootcamps.map((bootcamp) => {
 					return (
 						<li key={bootcamp.bootcampId}>

@@ -32,6 +32,10 @@ class ListClasses extends Component {
 					loading: false,
 					id,
 				});
+			} else {
+				this.setState({
+					loading: false,
+				});
 			}
 		});
 	}
@@ -46,17 +50,17 @@ class ListClasses extends Component {
 		return (
 			<Container>
 				<h2>All classes</h2>
-				<ClassesList classes={classes} id={id} />
+				<ClassesList classes={classes} id={id} loading={loading} />
 				<AddClasses />
 			</Container>
 		);
 	}
 }
 
-const ClassesList = ({ classes, id }) => {
+const ClassesList = ({ classes, id, loading }) => {
 	return (
 		<div>
-			{classes.length ? (
+			{classes.length && !loading ? (
 				classes.map((classObj) => (
 					<li key={classObj.classId}>
 						<Link to={`/bootcamps/${id}/${classObj.classId}`}>
