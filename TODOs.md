@@ -8,3 +8,4 @@
 - create some kind of home page that explains the purpose
 - fix loading spinner on classes
 - on button submit, exit the modal
+- STRETCH GOAL: add data visualization aspect using google data stuff. Analyze average base salary, Average months searching, plot on a graph all the points -- salary vs months searching
