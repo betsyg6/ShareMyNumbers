@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form, Col } from 'react-bootstrap';
 
 const INITIAL_STATE = {
 	companyName: '',
@@ -85,105 +85,135 @@ class AddOfferFormBase extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
-				<label>Company Name</label>
-				<input
-					type='text'
-					name='companyName'
-					value={this.state.companyName}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<label>Date Received</label>
-				<input
-					type='date'
-					name='dateRecieved'
-					value={this.state.dateRecieved}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<label>Years of Coding Experience</label>
-				<input
-					type='number'
-					name='yearsOfCodingExp'
-					value={this.state.yearsOfCodingExp}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<label>Number of Months Job Searching</label>
-				<input
-					type='number'
-					name='numOfMonthsJobSearching'
-					value={this.state.numOfMonthsJobSearching}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				{/* need to format this into a salary */}
-				<label>Base Salary</label>
-				<input
-					type='number'
-					name='baseSalary'
-					value={this.state.baseSalary}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				{/* i wonder if theres a way to format this into money */}
-				<label>Bonus</label>
-				<input
-					type='text'
-					name='bonus'
-					value={this.state.bonus}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				{/* need to edit this part with the checkbox */}
-				<label>Remote</label>
-				<input
-					type='checkbox'
-					name='remote'
-					value={this.state.remote}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				{/* i wonder if there's a way to format this into money */}
-				<label>Equity</label>
-				<input
-					type='number'
-					name='equity'
-					value={this.state.equity}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				{/* need to edit this into a dropdown */}
-				<label>Size of Company</label>
-				<input
-					type='text'
-					name='sizeOfCompany'
-					value={this.state.sizeOfCompany}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<label>Comments</label>
-				<input
-					type='text'
-					name='comments'
-					value={this.state.comments}
-					onChange={this.handleChange}
-				/>
-				<br />
-				<Modal.Footer>
-					<button type='submit'>Submit</button>
-				</Modal.Footer>
-			</form>
+			<Modal.Body>
+				<Form onSubmit={this.onSubmit}>
+					<Form.Row>
+						<Form.Group as={Col} controlId='companyName'>
+							<Form.Label>Company Name</Form.Label>
+							<Form.Control
+								type='text'
+								onChange={this.handleChange}
+								placeholder='Company Name'
+								name='companyName'
+								value={this.state.companyName}
+								required
+							/>
+						</Form.Group>
+
+						<Form.Group as={Col} controlId='dateRecieved'>
+							<Form.Label>Date Recieved</Form.Label>
+							<Form.Control
+								type='date'
+								name='dateRecieved'
+								onChange={this.handleChange}
+								value={this.state.dateRecieved}
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+
+					<Form.Row>
+						<Form.Group as={Col} controlId='sizeOfCompany'>
+							<Form.Label>Size of Company</Form.Label>
+							<Form.Control
+								as='select'
+								name='sizeOfCompany'
+								value={this.state.sizeOfCompany}
+								onChange={this.handleChange}
+							>
+								<option>S</option>
+								<option>M</option>
+								<option>L</option>
+							</Form.Control>
+						</Form.Group>
+
+						<Form.Group as={Col} controlId='yearsOfCodingExp'>
+							<Form.Label>Years Coding</Form.Label>
+							<Form.Control
+								as='select'
+								name='yearsOfCodingExp'
+								value={this.state.yearsOfCodingExp}
+								onChange={this.handleChange}
+							>
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5+</option>
+							</Form.Control>
+						</Form.Group>
+
+						<Form.Group as={Col} controlId='numOfMonthsJobSearching'>
+							<Form.Label>Months Job Searching</Form.Label>
+							<Form.Control
+								as='select'
+								name='numOfMonthsJobSearching'
+								value={this.state.numOfMonthsJobSearching}
+								onChange={this.handleChange}
+							>
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5+</option>
+							</Form.Control>
+						</Form.Group>
+					</Form.Row>
+
+					<Form.Row>
+						<Form.Group as={Col} controlId='baseSalary'>
+							<Form.Label>Base Salary</Form.Label>
+							<Form.Control
+								type='number'
+								name='baseSalary'
+								value={this.state.baseSalary}
+								onChange={this.handleChange}
+							/>
+						</Form.Group>
+
+						<Form.Group as={Col} controlId='bonus'>
+							<Form.Label>Bonus</Form.Label>
+							<Form.Control
+								type='number'
+								name='bonus'
+								value={this.state.bonus}
+								onChange={this.handleChange}
+							/>
+						</Form.Group>
+
+						<Form.Group as={Col} controlId='equity'>
+							<Form.Label>Equity</Form.Label>
+							<Form.Control
+								type='number'
+								name='equity'
+								value={this.state.equity}
+								onChange={this.handleChange}
+							/>
+						</Form.Group>
+					</Form.Row>
+
+					<Form.Group controlId='comments'>
+						<Form.Label>Comments</Form.Label>
+						<Form.Control
+							type='text'
+							name='comments'
+							value={this.state.comments}
+							onChange={this.handleChange}
+							placeholder='...anything else we should know?'
+						/>
+					</Form.Group>
+
+					<Form.Group id='formGridCheckbox'>
+						<Form.Check type='checkbox' label='Remote' />
+					</Form.Group>
+
+					<Button variant='primary' type='submit'>
+						Submit
+					</Button>
+				</Form>
+			</Modal.Body>
 		);
 	}
 }
