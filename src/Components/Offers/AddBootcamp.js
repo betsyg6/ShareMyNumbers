@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 const AddBootcamp = () => {
 	const [show, setShow] = useState(false);
@@ -51,20 +51,25 @@ class AddBootcampFormBase extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
-				<label>Bootcamp Name</label>
-				<input
-					type='text'
-					name='bootcampName'
-					value={this.state.bootcampName}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<Modal.Footer>
-					<button type='submit'>Submit</button>
-				</Modal.Footer>
-			</form>
+			<Modal.Body>
+				<Form onSubmit={this.onSubmit}>
+					<Form.Group>
+						<Form.Label>Bootcamp Name</Form.Label>
+						<Form.Control
+							type='text'
+							name='bootcampName'
+							placeholder='Name goes here...'
+							value={this.state.bootcampName}
+							onChange={this.handleChange}
+							required
+						/>
+					</Form.Group>
+
+					<Button variant='primary' type='submit'>
+						Submit
+					</Button>
+				</Form>
+			</Modal.Body>
 		);
 	}
 }

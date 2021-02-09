@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 const AddClass = () => {
 	const [show, setShow] = useState(false);
@@ -53,29 +53,34 @@ class AddClassFormBase extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
-				<label>Class Name</label>
-				<input
-					type='text'
-					name='className'
-					value={this.state.className}
-					onChange={this.handleChange}
-					required
-				/>
-				<br />
-				<label>Graduation Date</label>
-				<input
-					type='month'
-					name='graduationDate'
-					value={this.state.graduationDate}
-					onChange={this.handleChange}
-					required
-				/>
+			<Modal.Body>
+				<Form onSubmit={this.onSubmit}>
+					<Form.Group>
+						<Form.Label>Class Name</Form.Label>
+						<Form.Control
+							type='text'
+							name='className'
+							value={this.state.className}
+							onChange={this.handleChange}
+							required
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label>Graduation Date</Form.Label>
+						<Form.Control
+							type='month'
+							name='graduationDate'
+							value={this.state.graduationDate}
+							onChange={this.handleChange}
+							required
+						/>
+					</Form.Group>
 
-				<Modal.Footer>
-					<button type='submit'>Submit</button>
-				</Modal.Footer>
-			</form>
+					<Button variant='primary' type='submit'>
+						Submit
+					</Button>
+				</Form>
+			</Modal.Body>
 		);
 	}
 }
