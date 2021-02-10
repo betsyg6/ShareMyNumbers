@@ -56,7 +56,7 @@ class ListOffers extends Component {
 
 const OffersList = ({ offers, error }) => {
 	let keys = [
-		'Company Name',
+		// 'Company Name',
 		'Date Recieved',
 		'Number of Months Job Searching',
 		'Years of Coding Experience',
@@ -90,13 +90,13 @@ const OffersList = ({ offers, error }) => {
 						offers.map((offer) => {
 							return (
 								<tr key={offer.offerId}>
-									<td>{offer.companyName}</td>
+									{/* <td>{offer.companyName}</td> */}
 									<td>{offer.dateRecieved}</td>
 									<td>{offer.numOfMonthsJobSearching}</td>
 									<td>{offer.yearsOfCodingExp}</td>
-									<td>{offer.baseSalary}</td>
-									<td>{offer.bonus}</td>
-									<td>{offer.equity}</td>
+									<td>${offer.baseSalary}</td>
+									<td>${offer.bonus}</td>
+									{/* <td>{offer.equity}</td> */}
 									<td>{offer.remote}</td>
 									<td>{offer.sizeOfCompany}</td>
 									<td>{offer.comments}</td>

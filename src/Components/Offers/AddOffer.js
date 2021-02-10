@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import { Button, Modal, Form, Col } from 'react-bootstrap';
 
 const INITIAL_STATE = {
-	companyName: '',
+	// companyName: '',
 	dateRecieved: '',
 	yearsOfCodingExp: 0,
 	numOfMonthsJobSearching: 0,
@@ -52,7 +52,7 @@ class AddOfferFormBase extends Component {
 
 		const id = this.props.match.params.classId;
 		const {
-			companyName,
+			// companyName,
 			dateRecieved,
 			yearsOfCodingExp,
 			numOfMonthsJobSearching,
@@ -66,7 +66,7 @@ class AddOfferFormBase extends Component {
 		this.props.firebase
 			.addOffer(id)
 			.push({
-				companyName,
+				// companyName,
 				dateRecieved,
 				yearsOfCodingExp,
 				numOfMonthsJobSearching,
@@ -88,7 +88,7 @@ class AddOfferFormBase extends Component {
 			<Modal.Body>
 				<Form onSubmit={this.onSubmit}>
 					<Form.Row>
-						<Form.Group as={Col} controlId='companyName'>
+						{/* <Form.Group as={Col} controlId='companyName'>
 							<Form.Label>Company Name</Form.Label>
 							<Form.Control
 								type='text'
@@ -98,7 +98,7 @@ class AddOfferFormBase extends Component {
 								value={this.state.companyName}
 								required
 							/>
-						</Form.Group>
+						</Form.Group> */}
 
 						<Form.Group as={Col} controlId='dateRecieved'>
 							<Form.Label>Date Recieved</Form.Label>
@@ -144,7 +144,7 @@ class AddOfferFormBase extends Component {
 							</Form.Control>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId='numOfMonthsJobSearching'>
+						{/* <Form.Group as={Col} controlId='numOfMonthsJobSearching'>
 							<Form.Label>Months Job Searching</Form.Label>
 							<Form.Control
 								as='select'
@@ -159,7 +159,7 @@ class AddOfferFormBase extends Component {
 								<option>4</option>
 								<option>5+</option>
 							</Form.Control>
-						</Form.Group>
+						</Form.Group> */}
 					</Form.Row>
 
 					<Form.Row>
@@ -183,7 +183,7 @@ class AddOfferFormBase extends Component {
 							/>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId='equity'>
+						{/* <Form.Group as={Col} controlId='equity'>
 							<Form.Label>Equity</Form.Label>
 							<Form.Control
 								type='number'
@@ -191,7 +191,7 @@ class AddOfferFormBase extends Component {
 								value={this.state.equity}
 								onChange={this.handleChange}
 							/>
-						</Form.Group>
+						</Form.Group> */}
 					</Form.Row>
 
 					<Form.Group controlId='comments'>
