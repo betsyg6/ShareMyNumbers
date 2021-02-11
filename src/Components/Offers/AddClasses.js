@@ -4,23 +4,23 @@ import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { Button, Modal, Form } from 'react-bootstrap';
 
-const AddClass = () => {
-	const [show, setShow] = useState(false);
+// const AddClass = () => {
+// 	const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+// 	const handleClose = () => setShow(false);
+// 	const handleShow = () => setShow(true);
 
-	return (
-		<div>
-			<Button onClick={handleShow}>Add a Class</Button>
+// 	return (
+// 		<div>
+// 			<Button onClick={handleShow}>Add a Class</Button>
 
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header>Add Class</Modal.Header>
-				<AddClassForm />
-			</Modal>
-		</div>
-	);
-};
+// 			<Modal show={show} onHide={handleClose}>
+// 				<Modal.Header>Add Class</Modal.Header>
+// 				<AddClassForm />
+// 			</Modal>
+// 		</div>
+// 	);
+// };
 
 class AddClassFormBase extends Component {
 	constructor(props) {
@@ -28,8 +28,12 @@ class AddClassFormBase extends Component {
 		this.state = {
 			className: '',
 			graduationDate: '',
+			show: false,
 		};
 	}
+
+	handleClose = () => this.setState({ show: false });
+	handleShow = () => this.setState({ show: true });
 
 	handleChange = (event) => {
 		this.setState({
@@ -47,45 +51,50 @@ class AddClassFormBase extends Component {
 			.classes(id)
 			.push({ className, graduationDate })
 			.then(() => {
-				this.setState({ className: '', graduationDate: '' });
+				this.setState({ className: '', graduationDate: '', show: false });
 			})
 			.catch((error) => console.log(error));
 	};
 
 	render() {
 		return (
-			<Modal.Body>
-				<Form onSubmit={this.onSubmit}>
-					<Form.Group>
-						<Form.Label>Class Name</Form.Label>
-						<Form.Control
-							type='text'
-							name='className'
-							value={this.state.className}
-							onChange={this.handleChange}
-							required
-						/>
-					</Form.Group>
-					<Form.Group>
-						<Form.Label>Graduation Date</Form.Label>
-						<Form.Control
-							type='month'
-							name='graduationDate'
-							value={this.state.graduationDate}
-							onChange={this.handleChange}
-							required
-						/>
-					</Form.Group>
+			<div>
+				<Button onClick={this.handleShow}>Add a Bootcamp</Button>
+				<Modal show={this.state.show} onHide={this.handleClose}>
+					<Modal.Header>Add Class</Modal.Header>
+					<Modal.Body>
+						<Form onSubmit={this.onSubmit}>
+							<Form.Group>
+								<Form.Label>Class Name</Form.Label>
+								<Form.Control
+									type='text'
+									name='className'
+									value={this.state.className}
+									onChange={this.handleChange}
+									required
+								/>
+							</Form.Group>
+							<Form.Group>
+								<Form.Label>Graduation Date</Form.Label>
+								<Form.Control
+									type='month'
+									name='graduationDate'
+									value={this.state.graduationDate}
+									onChange={this.handleChange}
+									required
+								/>
+							</Form.Group>
 
-					<Button variant='primary' type='submit'>
-						Submit
-					</Button>
-				</Form>
-			</Modal.Body>
+							<Button variant='primary' type='submit'>
+								Submit
+							</Button>
+						</Form>
+					</Modal.Body>
+				</Modal>
+			</div>
 		);
 	}
 }
 
 const AddClassForm = compose(withFirebase, withRouter)(AddClassFormBase);
-export default AddClass;
-export { AddClassForm };
+export default AddClassForm;

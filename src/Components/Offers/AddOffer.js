@@ -17,29 +17,32 @@ const INITIAL_STATE = {
 	comments: '',
 };
 
-const AddOffer = () => {
-	const [show, setShow] = useState(false);
+// const AddOffer = () => {
+// 	const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+// 	const handleClose = () => setShow(false);
+// 	const handleShow = () => setShow(true);
 
-	return (
-		<div>
-			<Button onClick={handleShow}>Add an Offer</Button>
+// 	return (
+// 		<div>
+// 			<Button onClick={handleShow}>Add an Offer</Button>
 
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header>Add Offer</Modal.Header>
-				<AddOfferForm />
-			</Modal>
-		</div>
-	);
-};
+// 			<Modal show={show} onHide={handleClose}>
+// 				<Modal.Header>Add Offer</Modal.Header>
+// 				<AddOfferForm />
+// 			</Modal>
+// 		</div>
+// 	);
+// };
 
 class AddOfferFormBase extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { ...INITIAL_STATE };
+		this.state = { ...INITIAL_STATE, show: false };
 	}
+
+	handleClose = () => this.setState({ show: false });
+	handleShow = () => this.setState({ show: true });
 
 	handleChange = (event) => {
 		this.setState({
@@ -78,17 +81,22 @@ class AddOfferFormBase extends Component {
 				comments,
 			})
 			.then(() => {
-				this.setState({ ...INITIAL_STATE });
+				this.setState({ ...INITIAL_STATE, show: false });
 			})
 			.catch((error) => console.log(error));
 	};
 
 	render() {
 		return (
-			<Modal.Body>
-				<Form onSubmit={this.onSubmit}>
-					<Form.Row>
-						{/* <Form.Group as={Col} controlId='companyName'>
+			<div>
+				<Button onClick={this.handleShow}>Add an Offer</Button>
+
+				<Modal show={this.state.show} onHide={this.handleClose}>
+					<Modal.Header>Add Offer</Modal.Header>
+					<Modal.Body>
+						<Form onSubmit={this.onSubmit}>
+							<Form.Row>
+								{/* <Form.Group as={Col} controlId='companyName'>
 							<Form.Label>Company Name</Form.Label>
 							<Form.Control
 								type='text'
@@ -100,51 +108,51 @@ class AddOfferFormBase extends Component {
 							/>
 						</Form.Group> */}
 
-						<Form.Group as={Col} controlId='dateRecieved'>
-							<Form.Label>Date Recieved</Form.Label>
-							<Form.Control
-								type='date'
-								name='dateRecieved'
-								onChange={this.handleChange}
-								value={this.state.dateRecieved}
-								required
-							/>
-						</Form.Group>
-					</Form.Row>
+								<Form.Group as={Col} controlId='dateRecieved'>
+									<Form.Label>Date Recieved</Form.Label>
+									<Form.Control
+										type='date'
+										name='dateRecieved'
+										onChange={this.handleChange}
+										value={this.state.dateRecieved}
+										required
+									/>
+								</Form.Group>
+							</Form.Row>
 
-					<Form.Row>
-						<Form.Group as={Col} controlId='sizeOfCompany'>
-							<Form.Label>Size of Company</Form.Label>
-							<Form.Control
-								as='select'
-								name='sizeOfCompany'
-								value={this.state.sizeOfCompany}
-								onChange={this.handleChange}
-							>
-								<option>S</option>
-								<option>M</option>
-								<option>L</option>
-							</Form.Control>
-						</Form.Group>
+							<Form.Row>
+								<Form.Group as={Col} controlId='sizeOfCompany'>
+									<Form.Label>Size of Company</Form.Label>
+									<Form.Control
+										as='select'
+										name='sizeOfCompany'
+										value={this.state.sizeOfCompany}
+										onChange={this.handleChange}
+									>
+										<option>S</option>
+										<option>M</option>
+										<option>L</option>
+									</Form.Control>
+								</Form.Group>
 
-						<Form.Group as={Col} controlId='yearsOfCodingExp'>
-							<Form.Label>Years Coding</Form.Label>
-							<Form.Control
-								as='select'
-								name='yearsOfCodingExp'
-								value={this.state.yearsOfCodingExp}
-								onChange={this.handleChange}
-							>
-								<option>0</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5+</option>
-							</Form.Control>
-						</Form.Group>
+								<Form.Group as={Col} controlId='yearsOfCodingExp'>
+									<Form.Label>Years Coding</Form.Label>
+									<Form.Control
+										as='select'
+										name='yearsOfCodingExp'
+										value={this.state.yearsOfCodingExp}
+										onChange={this.handleChange}
+									>
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5+</option>
+									</Form.Control>
+								</Form.Group>
 
-						{/* <Form.Group as={Col} controlId='numOfMonthsJobSearching'>
+								{/* <Form.Group as={Col} controlId='numOfMonthsJobSearching'>
 							<Form.Label>Months Job Searching</Form.Label>
 							<Form.Control
 								as='select'
@@ -160,30 +168,30 @@ class AddOfferFormBase extends Component {
 								<option>5+</option>
 							</Form.Control>
 						</Form.Group> */}
-					</Form.Row>
+							</Form.Row>
 
-					<Form.Row>
-						<Form.Group as={Col} controlId='baseSalary'>
-							<Form.Label>Base Salary</Form.Label>
-							<Form.Control
-								type='number'
-								name='baseSalary'
-								value={this.state.baseSalary}
-								onChange={this.handleChange}
-							/>
-						</Form.Group>
+							<Form.Row>
+								<Form.Group as={Col} controlId='baseSalary'>
+									<Form.Label>Base Salary</Form.Label>
+									<Form.Control
+										type='number'
+										name='baseSalary'
+										value={this.state.baseSalary}
+										onChange={this.handleChange}
+									/>
+								</Form.Group>
 
-						<Form.Group as={Col} controlId='bonus'>
-							<Form.Label>Bonus</Form.Label>
-							<Form.Control
-								type='number'
-								name='bonus'
-								value={this.state.bonus}
-								onChange={this.handleChange}
-							/>
-						</Form.Group>
+								<Form.Group as={Col} controlId='bonus'>
+									<Form.Label>Bonus</Form.Label>
+									<Form.Control
+										type='number'
+										name='bonus'
+										value={this.state.bonus}
+										onChange={this.handleChange}
+									/>
+								</Form.Group>
 
-						{/* <Form.Group as={Col} controlId='equity'>
+								{/* <Form.Group as={Col} controlId='equity'>
 							<Form.Label>Equity</Form.Label>
 							<Form.Control
 								type='number'
@@ -192,32 +200,33 @@ class AddOfferFormBase extends Component {
 								onChange={this.handleChange}
 							/>
 						</Form.Group> */}
-					</Form.Row>
+							</Form.Row>
 
-					<Form.Group controlId='comments'>
-						<Form.Label>Comments</Form.Label>
-						<Form.Control
-							type='text'
-							name='comments'
-							value={this.state.comments}
-							onChange={this.handleChange}
-							placeholder='...anything else we should know?'
-						/>
-					</Form.Group>
+							<Form.Group controlId='comments'>
+								<Form.Label>Comments</Form.Label>
+								<Form.Control
+									type='text'
+									name='comments'
+									value={this.state.comments}
+									onChange={this.handleChange}
+									placeholder='...anything else we should know?'
+								/>
+							</Form.Group>
 
-					<Form.Group id='formGridCheckbox'>
-						<Form.Check type='checkbox' label='Remote' />
-					</Form.Group>
+							<Form.Group id='formGridCheckbox'>
+								<Form.Check type='checkbox' label='Remote' />
+							</Form.Group>
 
-					<Button variant='primary' type='submit'>
-						Submit
-					</Button>
-				</Form>
-			</Modal.Body>
+							<Button variant='primary' type='submit'>
+								Submit
+							</Button>
+						</Form>
+					</Modal.Body>
+				</Modal>
+			</div>
 		);
 	}
 }
 
 const AddOfferForm = compose(withFirebase, withRouter)(AddOfferFormBase);
-export default AddOffer;
-export { AddOfferForm };
+export default AddOfferForm;

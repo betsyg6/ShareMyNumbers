@@ -38,9 +38,9 @@ class ListOffers extends Component {
 		});
 	}
 
-	componentWillUnmount() {
-		this.props.firebase.offers().off();
-	}
+	// componentWillUnmount() {
+	// 	this.props.firebase.offers().off();
+	// }
 
 	render() {
 		const { offers, error } = this.state;

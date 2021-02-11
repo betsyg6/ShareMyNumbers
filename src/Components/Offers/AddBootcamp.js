@@ -4,31 +4,35 @@ import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { Button, Modal, Form } from 'react-bootstrap';
 
-const AddBootcamp = () => {
-	const [show, setShow] = useState(false);
+// const AddBootcamp = () => {
+// 	const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+// 	const handleClose = () => setShow(false);
+// 	const handleShow = () => setShow(true);
 
-	return (
-		<div>
-			<Button onClick={handleShow}>Add a Bootcamp</Button>
+// 	return (
+// 		<div>
+// 			<Button onClick={handleShow}>Add a Bootcamp</Button>
 
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header>Add Bootcamp</Modal.Header>
-				<AddBootcampForm />
-			</Modal>
-		</div>
-	);
-};
+// 			<Modal show={show} onHide={handleClose}>
+// 				<Modal.Header>Add Bootcamp</Modal.Header>
+// 				<AddBootcampForm />
+// 			</Modal>
+// 		</div>
+// 	);
+// };
 
 class AddBootcampFormBase extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			show: false,
 			bootcampName: '',
 		};
 	}
+
+	handleClose = () => this.setState({ show: false });
+	handleShow = () => this.setState({ show: true });
 
 	handleChange = (event) => {
 		this.setState({
@@ -44,36 +48,41 @@ class AddBootcampFormBase extends Component {
 			.bootcamps()
 			.push({ bootcampName })
 			.then(() => {
-				this.setState({ bootcampName: '' });
+				this.setState({ bootcampName: '', show: false });
 			})
 			.catch((error) => console.log(error));
 	};
 
 	render() {
 		return (
-			<Modal.Body>
-				<Form onSubmit={this.onSubmit}>
-					<Form.Group>
-						<Form.Label>Bootcamp Name</Form.Label>
-						<Form.Control
-							type='text'
-							name='bootcampName'
-							placeholder='Name goes here...'
-							value={this.state.bootcampName}
-							onChange={this.handleChange}
-							required
-						/>
-					</Form.Group>
+			<div>
+				<Button onClick={this.handleShow}>Add a Bootcamp</Button>
+				<Modal show={this.state.show} onHide={this.handleClose}>
+					<Modal.Header>Add Bootcamp</Modal.Header>
+					<Modal.Body>
+						<Form onSubmit={this.onSubmit}>
+							<Form.Group>
+								<Form.Label>Bootcamp Name</Form.Label>
+								<Form.Control
+									type='text'
+									name='bootcampName'
+									placeholder='Name goes here...'
+									value={this.state.bootcampName}
+									onChange={this.handleChange}
+									required
+								/>
+							</Form.Group>
 
-					<Button variant='primary' type='submit'>
-						Submit
-					</Button>
-				</Form>
-			</Modal.Body>
+							<Button variant='primary' type='submit'>
+								Submit
+							</Button>
+						</Form>
+					</Modal.Body>
+				</Modal>
+			</div>
 		);
 	}
 }
 
 const AddBootcampForm = compose(withFirebase, withRouter)(AddBootcampFormBase);
-export default AddBootcamp;
-export { AddBootcampForm };
+export default AddBootcampForm;

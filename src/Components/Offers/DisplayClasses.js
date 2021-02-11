@@ -60,7 +60,8 @@ class ListClasses extends Component {
 const ClassesList = ({ classes, id, loading }) => {
 	return (
 		<div>
-			{classes.length && !loading ? (
+			{loading && <Spinner animation='border' variant='primary' />}
+			{classes.length ? (
 				classes.map((classObj) => (
 					<li key={classObj.classId}>
 						<Link to={`/bootcamps/${id}/${classObj.classId}`}>
@@ -69,7 +70,7 @@ const ClassesList = ({ classes, id, loading }) => {
 					</li>
 				))
 			) : (
-				<Spinner animation='border' variant='primary' />
+				<p>No Classes Yet!</p>
 			)}
 		</div>
 	);
