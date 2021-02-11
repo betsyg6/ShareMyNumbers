@@ -8,6 +8,14 @@ Share My Numbers is an app that allows coding bootcamp graduates to share their 
 
 Check out the site (still in progress) [here](https://share-my-numbers.herokuapp.com/)!
 
+# More Wage Gap Info
+
+- Center for American [Progress](https://www.americanprogress.org/issues/women/reports/2020/03/24/482141/quick-facts-gender-wage-gap/#:~:text=What%20is%20the%20gender%20wage,for%20most%20women%20of%20color.)
+- American Association of University [Women](https://www.aauw.org/resources/research/simple-truth/)
+- [PayScale](https://www.payscale.com/data/gender-pay-gap)
+- [CNBC](https://www.cnbc.com/2019/05/09/8-steps-economists-say-could-help-close-the-gender-pay-gap.html)
+- [Forbes](https://www.forbes.com/sites/lizfrazierpeck/2019/08/26/on-womens-equality-day-how-to-fight-the-gender-pay-gap/?sh=16fbde14660b)
+
 # Downloading Instructions
 
 ```
