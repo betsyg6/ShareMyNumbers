@@ -86,7 +86,7 @@ const OffersList = ({ offers, error }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{offers.length > 0 ? (
+					{offers.length > 0 &&
 						offers.map((offer) => {
 							return (
 								<tr key={offer.offerId}>
@@ -102,14 +102,10 @@ const OffersList = ({ offers, error }) => {
 									<td>{offer.comments}</td>
 								</tr>
 							);
-						})
-					) : (
-						<tr key='error'>
-							<td>{error}</td>
-						</tr>
-					)}
+						})}
 				</tbody>
 			</Table>
+			{error && <p>{error}</p>}
 		</div>
 	);
 };
