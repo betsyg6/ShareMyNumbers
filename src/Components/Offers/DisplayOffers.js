@@ -65,6 +65,31 @@ const OffersList = ({ offers, error }) => {
 		'Size of Company',
 		'Comments',
 	];
+	let avgkeys = [
+		'Number of Months Job Searching',
+		'Years of Coding Experience',
+		'Base Salary',
+		'Bonus',
+	];
+	const length = offers.length;
+	const avgBase =
+		offers.map((offer) => Number(offer.baseSalary)).reduce((a, b) => a + b, 0) /
+			length || 0;
+
+	const avgMonths =
+		offers
+			.map((offer) => Number(offer.numOfMonthsJobSearching))
+			.reduce((a, b) => a + b, 0) / length || 0;
+
+	const avgBonus =
+		offers.map((offer) => Number(offer.bonus)).reduce((a, b) => a + b, 0) /
+			length || 0;
+
+	const avgYearsExp =
+		offers
+			.map((offer) => Number(offer.yearsOfCodingExp))
+			.reduce((a, b) => a + b, 0) / length || 0;
+
 	return (
 		<div style={{ width: '90%', margin: '0 auto' }}>
 			<h2 style={{ textAlign: 'center', margin: '20px auto auto' }}>Offers</h2>
@@ -104,6 +129,33 @@ const OffersList = ({ offers, error }) => {
 				</tbody>
 			</Table>
 			{error && <p>{error}</p>}
+
+			<h2 style={{ textAlign: 'center', margin: '20px auto auto' }}>
+				Averages
+			</h2>
+			<Table
+				variant='default'
+				style={{ width: '100%', margin: '20px auto' }}
+				striped
+				bordered
+				responsive
+			>
+				<thead>
+					<tr>
+						{avgkeys.map((heading) => {
+							return <td key={heading}>{heading}</td>;
+						})}
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{avgMonths}</td>
+						<td>{avgYearsExp}</td>
+						<td>{avgBase}</td>
+						<td>{avgBonus}</td>
+					</tr>
+				</tbody>
+			</Table>
 		</div>
 	);
 };
@@ -114,7 +166,7 @@ const DisplayChartData = ({ offers }) => {
 	});
 	const keys = [['Months Searching', 'Base Salary']];
 	const combo = [...keys, ...data];
-	console.log([combo]);
+
 	return (
 		<div>
 			<h1>Chart Data</h1>
