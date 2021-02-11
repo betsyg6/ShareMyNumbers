@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
 import { Container, Spinner, Table } from 'react-bootstrap';
+import { Chart } from 'react-google-charts';
 
 class ListOffers extends Component {
 	constructor(props) {
@@ -38,10 +39,6 @@ class ListOffers extends Component {
 		});
 	}
 
-	// componentWillUnmount() {
-	// 	this.props.firebase.offers().off();
-	// }
-
 	render() {
 		const { offers, error } = this.state;
 
@@ -49,6 +46,7 @@ class ListOffers extends Component {
 			<Container>
 				<OffersList offers={offers} error={error} />
 				<AddOffer />
+				<DisplayChartData offers={offers} />
 			</Container>
 		);
 	}
@@ -106,6 +104,34 @@ const OffersList = ({ offers, error }) => {
 				</tbody>
 			</Table>
 			{error && <p>{error}</p>}
+		</div>
+	);
+};
+
+const DisplayChartData = ({ offers }) => {
+	const data = offers.map((offer) => {
+		return [Number(offer.numOfMonthsJobSearching), Number(offer.baseSalary)];
+	});
+	const keys = [['Months Searching', 'Base Salary']];
+	const combo = [...keys, ...data];
+	console.log([combo]);
+	return (
+		<div>
+			<h1>Chart Data</h1>
+			<Chart
+				width={'600px'}
+				height={'400px'}
+				chartType='ScatterChart'
+				loader={<div>Loading Chart</div>}
+				data={combo}
+				options={{
+					title: 'Months searching and Salary Comparison',
+					hAxis: { title: 'Months Searching' },
+					vAxis: { title: 'Base Salary' },
+					legend: 'none',
+				}}
+				rootProps={{ 'data-testid': '1' }}
+			/>
 		</div>
 	);
 };

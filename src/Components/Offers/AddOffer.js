@@ -135,7 +135,7 @@ class AddOfferFormBase extends Component {
 									</Form.Control>
 								</Form.Group>
 
-								<Form.Group as={Col} controlId='yearsOfCodingExp'>
+								{/* <Form.Group as={Col} controlId='yearsOfCodingExp'>
 									<Form.Label>Years Coding</Form.Label>
 									<Form.Control
 										as='select'
@@ -150,24 +150,31 @@ class AddOfferFormBase extends Component {
 										<option>4</option>
 										<option>5+</option>
 									</Form.Control>
-								</Form.Group>
+								</Form.Group> */}
 
-								{/* <Form.Group as={Col} controlId='numOfMonthsJobSearching'>
-							<Form.Label>Months Job Searching</Form.Label>
-							<Form.Control
-								as='select'
-								name='numOfMonthsJobSearching'
-								value={this.state.numOfMonthsJobSearching}
-								onChange={this.handleChange}
-							>
-								<option>0</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5+</option>
-							</Form.Control>
-						</Form.Group> */}
+								<Form.Group as={Col} controlId='numOfMonthsJobSearching'>
+									<Form.Label>Months Job Searching</Form.Label>
+									<Form.Control
+										as='select'
+										name='numOfMonthsJobSearching'
+										value={this.state.numOfMonthsJobSearching}
+										onChange={this.handleChange}
+									>
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+										<option>7</option>
+										<option>8</option>
+										<option>9</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+									</Form.Control>
+								</Form.Group>
 							</Form.Row>
 
 							<Form.Row>
