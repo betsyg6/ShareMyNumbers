@@ -42,6 +42,7 @@ class AddClassFormBase extends Component {
 
 		const id = this.props.match.params.bootcampId;
 		const { className, graduationDate } = this.state;
+
 		this.props.firebase
 			.classes(id)
 			.push({ className, graduationDate })

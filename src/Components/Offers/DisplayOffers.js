@@ -62,7 +62,7 @@ const OffersList = ({ offers, error }) => {
 		'Years of Coding Experience',
 		'Base Salary',
 		'Bonus',
-		'Equity',
+		// 'Equity',
 		'Remote',
 		'Size of Company',
 		'Comments',
