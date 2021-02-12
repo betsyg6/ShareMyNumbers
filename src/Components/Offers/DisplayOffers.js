@@ -126,8 +126,8 @@ const OffersList = ({ offers, error }) => {
 											<td>{offer.dateRecieved}</td>
 											<td>{offer.numOfMonthsJobSearching}</td>
 											<td>{offer.yearsOfCodingExp}</td>
-											<td>${offer.baseSalary}</td>
-											<td>${offer.bonus}</td>
+											<td>${Number(offer.baseSalary).toLocaleString()}</td>
+											<td>${Number(offer.bonus).toLocaleString()}</td>
 											{/* <td>{offer.equity}</td> */}
 											<td>{offer.remote}</td>
 											<td>{offer.sizeOfCompany}</td>
@@ -158,8 +158,8 @@ const OffersList = ({ offers, error }) => {
 							<tr>
 								<td>{avgMonths}</td>
 								<td>{avgYearsExp}</td>
-								<td>{avgBase}</td>
-								<td>{avgBonus}</td>
+								<td>${Number(avgBase).toLocaleString()}</td>
+								<td>${Number(avgBonus).toLocaleString()}</td>
 							</tr>
 						</tbody>
 					</Table>
