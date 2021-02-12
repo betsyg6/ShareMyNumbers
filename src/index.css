@@ -25,3 +25,10 @@ ul {
 	height: 500px;
 	margin: auto;
 }
+
+/* .col {
+	display: flex;
+	justify-content: center;
+	/* text-align: center; */
+/* flex-direction: column;
+} */

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
-import { Spinner, Container, ListGroup } from 'react-bootstrap';
+import { Spinner, Container, ListGroup, Form } from 'react-bootstrap';
 import AddClasses from './AddClasses';
 
 class ListClasses extends Component {
@@ -58,29 +58,54 @@ class ListClasses extends Component {
 }
 
 const ClassesList = ({ classes, id, loading }) => {
+	const [filter, setFilter] = useState('');
+
+	const handleChange = (event) => {
+		setFilter(event.target.value);
+	};
+
+	//experimenting with sorting by month and year
 	if (classes.length) {
-		console.log(new Date(classes[0].graduationDate));
+		let day = new Date(classes[0].graduationDate);
+		day.setDate(day.getDate() + 1);
+		console.log(day);
+		//then i can access the month and the year and sort by month/year
 	}
 
 	return (
-		<ListGroup>
-			{loading && <Spinner animation='border' variant='primary' />}
-			{classes.length ? (
-				classes
-					.sort((a, b) => b.graduationDate - a.graduationDate)
-					.map((classObj) => (
-						<ListGroup horizontal>
-							<ListGroup.Item action variant='light' key={classObj.classId}>
-								<Link to={`/bootcamps/${id}/${classObj.classId}`}>
-									{classObj.className} | {classObj.graduationDate}
-								</Link>
-							</ListGroup.Item>
-						</ListGroup>
-					))
-			) : (
-				<p>No Classes Yet!</p>
-			)}
-		</ListGroup>
+		<>
+			<Form>
+				<Form.Group controlId='filter'>
+					<Form.Label>Search by Name</Form.Label>
+					<Form.Control
+						type='text'
+						name='filter'
+						onChange={handleChange}
+						value={filter}
+					/>
+				</Form.Group>
+			</Form>
+			<ListGroup>
+				{loading && <Spinner animation='border' variant='primary' />}
+				{classes.length ? (
+					classes
+						.filter((classObj) => {
+							return classObj.className.includes(filter);
+						})
+						.map((classObj) => (
+							<ListGroup horizontal key={classObj.classId}>
+								<ListGroup.Item action variant='light'>
+									<Link to={`/bootcamps/${id}/${classObj.classId}`}>
+										{classObj.className} | {classObj.graduationDate}
+									</Link>
+								</ListGroup.Item>
+							</ListGroup>
+						))
+				) : (
+					<p>No Classes Yet!</p>
+				)}
+			</ListGroup>
+		</>
 	);
 };
 

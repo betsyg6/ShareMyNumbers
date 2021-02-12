@@ -5,7 +5,6 @@ import { compose } from 'recompose';
 import { Button, Modal, Form, Col } from 'react-bootstrap';
 
 const INITIAL_STATE = {
-	// companyName: '',
 	dateRecieved: '',
 	yearsOfCodingExp: 0,
 	numOfMonthsJobSearching: 0,
@@ -16,24 +15,6 @@ const INITIAL_STATE = {
 	sizeOfCompany: 'S',
 	comments: '',
 };
-
-// const AddOffer = () => {
-// 	const [show, setShow] = useState(false);
-
-// 	const handleClose = () => setShow(false);
-// 	const handleShow = () => setShow(true);
-
-// 	return (
-// 		<div>
-// 			<Button onClick={handleShow}>Add an Offer</Button>
-
-// 			<Modal show={show} onHide={handleClose}>
-// 				<Modal.Header>Add Offer</Modal.Header>
-// 				<AddOfferForm />
-// 			</Modal>
-// 		</div>
-// 	);
-// };
 
 class AddOfferFormBase extends Component {
 	constructor(props) {
@@ -55,7 +36,6 @@ class AddOfferFormBase extends Component {
 
 		const id = this.props.match.params.classId;
 		const {
-			// companyName,
 			dateRecieved,
 			yearsOfCodingExp,
 			numOfMonthsJobSearching,
@@ -69,7 +49,6 @@ class AddOfferFormBase extends Component {
 		this.props.firebase
 			.addOffer(id)
 			.push({
-				// companyName,
 				dateRecieved,
 				yearsOfCodingExp,
 				numOfMonthsJobSearching,
@@ -98,18 +77,6 @@ class AddOfferFormBase extends Component {
 					<Modal.Body>
 						<Form onSubmit={this.onSubmit}>
 							<Form.Row>
-								{/* <Form.Group as={Col} controlId='companyName'>
-							<Form.Label>Company Name</Form.Label>
-							<Form.Control
-								type='text'
-								onChange={this.handleChange}
-								placeholder='Company Name'
-								name='companyName'
-								value={this.state.companyName}
-								required
-							/>
-						</Form.Group> */}
-
 								<Form.Group as={Col} controlId='dateRecieved'>
 									<Form.Label>Date Recieved</Form.Label>
 									<Form.Control
@@ -136,23 +103,6 @@ class AddOfferFormBase extends Component {
 										<option>L</option>
 									</Form.Control>
 								</Form.Group>
-
-								{/* <Form.Group as={Col} controlId='yearsOfCodingExp'>
-									<Form.Label>Years Coding</Form.Label>
-									<Form.Control
-										as='select'
-										name='yearsOfCodingExp'
-										value={this.state.yearsOfCodingExp}
-										onChange={this.handleChange}
-									>
-										<option>0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5+</option>
-									</Form.Control>
-								</Form.Group> */}
 
 								<Form.Group as={Col} controlId='numOfMonthsJobSearching'>
 									<Form.Label>Months Job Searching</Form.Label>
@@ -199,16 +149,6 @@ class AddOfferFormBase extends Component {
 										onChange={this.handleChange}
 									/>
 								</Form.Group>
-
-								{/* <Form.Group as={Col} controlId='equity'>
-							<Form.Label>Equity</Form.Label>
-							<Form.Control
-								type='number'
-								name='equity'
-								value={this.state.equity}
-								onChange={this.handleChange}
-							/>
-						</Form.Group> */}
 							</Form.Row>
 
 							<Form.Group controlId='comments'>
