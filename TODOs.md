@@ -10,7 +10,8 @@
 - bootcamps:
   - [ ] make the list prettier
 - add styling/customization for react bootstrap components
+- use figma mockup to help with flexboxing
 - disable buttons if the info isn't completed?
 - toast notis when you add to the website
 - breadcrumbs feature so you can go back a step
-- footer
+- footer??
