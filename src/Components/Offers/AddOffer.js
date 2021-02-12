@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 	numOfMonthsJobSearching: 0,
 	baseSalary: 0,
 	bonus: 0,
-	remote: false,
+	// remote: false,
 	equity: 0,
 	sizeOfCompany: 'S',
 	comments: '',
@@ -41,7 +41,7 @@ class AddOfferFormBase extends Component {
 			numOfMonthsJobSearching,
 			baseSalary,
 			bonus,
-			remote,
+			// remote,
 			equity,
 			sizeOfCompany,
 			comments,
@@ -54,7 +54,7 @@ class AddOfferFormBase extends Component {
 				numOfMonthsJobSearching,
 				baseSalary,
 				bonus,
-				remote,
+				// remote,
 				equity,
 				sizeOfCompany,
 				comments,
@@ -160,10 +160,6 @@ class AddOfferFormBase extends Component {
 									onChange={this.handleChange}
 									placeholder='...anything else we should know?'
 								/>
-							</Form.Group>
-
-							<Form.Group id='formGridCheckbox'>
-								<Form.Check type='checkbox' label='Remote' />
 							</Form.Group>
 
 							<Button variant='primary' type='submit'>

@@ -1,26 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { Button, Modal, Form } from 'react-bootstrap';
-
-// const AddClass = () => {
-// 	const [show, setShow] = useState(false);
-
-// 	const handleClose = () => setShow(false);
-// 	const handleShow = () => setShow(true);
-
-// 	return (
-// 		<div>
-// 			<Button onClick={handleShow}>Add a Class</Button>
-
-// 			<Modal show={show} onHide={handleClose}>
-// 				<Modal.Header>Add Class</Modal.Header>
-// 				<AddClassForm />
-// 			</Modal>
-// 		</div>
-// 	);
-// };
 
 class AddClassFormBase extends Component {
 	constructor(props) {

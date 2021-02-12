@@ -1,26 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { Button, Modal, Form } from 'react-bootstrap';
-
-// const AddBootcamp = () => {
-// 	const [show, setShow] = useState(false);
-
-// 	const handleClose = () => setShow(false);
-// 	const handleShow = () => setShow(true);
-
-// 	return (
-// 		<div>
-// 			<Button onClick={handleShow}>Add a Bootcamp</Button>
-
-// 			<Modal show={show} onHide={handleClose}>
-// 				<Modal.Header>Add Bootcamp</Modal.Header>
-// 				<AddBootcampForm />
-// 			</Modal>
-// 		</div>
-// 	);
-// };
 
 class AddBootcampFormBase extends Component {
 	constructor(props) {

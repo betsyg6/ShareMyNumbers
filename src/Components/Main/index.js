@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-	Jumbotron,
-	Button,
-	Carousel,
-	Container,
-	Row,
-	Col,
-} from 'react-bootstrap';
+import { Button, Carousel, Container, Row, Col } from 'react-bootstrap';
 import * as ROUTES from '../../Constants/routes';
 
 //this page might end up getting deleted
@@ -38,6 +31,7 @@ const Main = () => {
 								src='thisisengineering-raeng-pIdteYOzGFY-unsplash.jpg'
 								height='600px'
 								width='100%'
+								alt='pic1'
 							/>
 							<Carousel.Caption>
 								<h3>Share Salaries</h3>
@@ -49,6 +43,7 @@ const Main = () => {
 								src='alexandru-acea-XEB8y0nRRP4-unsplash.jpg'
 								height='600px'
 								width='100%'
+								alt='pic2'
 							/>
 							<Carousel.Caption>
 								<h3>Support Your Community</h3>
@@ -60,6 +55,7 @@ const Main = () => {
 								src='heylagostechie-IgUR1iX0mqM-unsplash.jpg'
 								height='600px'
 								width='100%'
+								alt='pic3'
 							/>
 							<Carousel.Caption>
 								<h3>Empower the Future</h3>

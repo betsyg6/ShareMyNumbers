@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Main from '../Main';
@@ -6,7 +6,6 @@ import * as ROUTES from '../../Constants/routes';
 import ListOffers from '../Offers/DisplayOffers';
 import BootcampsMain from '../Offers/BootcampsMain';
 import ListClasses from '../Offers/DisplayClasses';
-import { Jumbotron, Button } from 'react-bootstrap';
 
 const App = () => {
 	return (

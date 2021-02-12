@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
-import { Container, Spinner, Table, Row, Col } from 'react-bootstrap';
+import { Container, Table, Row, Col } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
 
 class ListOffers extends Component {
@@ -61,7 +61,7 @@ const OffersList = ({ offers, error }) => {
 		'Base Salary',
 		'Bonus',
 		// 'Equity',
-		'Remote',
+		// 'Remote',
 		'Size of Company',
 		'Comments',
 	];
@@ -129,7 +129,7 @@ const OffersList = ({ offers, error }) => {
 											<td>${Number(offer.baseSalary).toLocaleString()}</td>
 											<td>${Number(offer.bonus).toLocaleString()}</td>
 											{/* <td>{offer.equity}</td> */}
-											<td>{offer.remote}</td>
+											{/* <td>{offer.remote}</td> */}
 											<td>{offer.sizeOfCompany}</td>
 											<td>{offer.comments}</td>
 										</tr>
@@ -176,6 +176,18 @@ const DisplayChartData = ({ offers }) => {
 	const keys = [['Months Searching', 'Base Salary']];
 	const combo = [...keys, ...data];
 
+	const small = offers.filter((offer) => {
+		return offer.sizeOfCompany === 'S';
+	});
+
+	const medium = offers.filter((offer) => {
+		return offer.sizeOfCompany === 'M';
+	});
+
+	const large = offers.filter((offer) => {
+		return offer.sizeOfCompany === 'L';
+	});
+
 	return (
 		<Container>
 			<Row>
@@ -192,6 +204,38 @@ const DisplayChartData = ({ offers }) => {
 							hAxis: { title: 'Months Searching' },
 							vAxis: { title: 'Base Salary' },
 							legend: 'none',
+							animation: {
+								startup: true,
+								easing: 'linear',
+								duration: 1500,
+							},
+							enableInteractivity: false,
+						}}
+						chartEvents={[
+							{
+								eventName: 'animationfinish',
+								callback: () => {
+									console.log('Animation Finished');
+								},
+							},
+						]}
+						rootProps={{ 'data-testid': '1' }}
+					/>
+				</Col>
+				<Col>
+					<Chart
+						width={'500px'}
+						height={'300px'}
+						chartType='PieChart'
+						loader={<div>Loading Chart</div>}
+						data={[
+							['Task', 'Hours per Day'],
+							['Small', small.length],
+							['Medium', medium.length],
+							['Large', large.length],
+						]}
+						options={{
+							title: 'Company Sizes',
 						}}
 						rootProps={{ 'data-testid': '1' }}
 					/>
