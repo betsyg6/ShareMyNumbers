@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import AddOffer from './AddOffer';
-import { Container, Spinner, Table } from 'react-bootstrap';
+import { Container, Spinner, Table, Row, Col } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
 
 class ListOffers extends Component {
@@ -45,7 +45,7 @@ class ListOffers extends Component {
 		return (
 			<Container>
 				<OffersList offers={offers} error={error} />
-				<AddOffer />
+
 				<DisplayChartData offers={offers} />
 			</Container>
 		);
@@ -91,72 +91,81 @@ const OffersList = ({ offers, error }) => {
 			.reduce((a, b) => a + b, 0) / length || 0;
 
 	return (
-		<div style={{ width: '90%', margin: '0 auto' }}>
-			<h2 style={{ textAlign: 'center', margin: '20px auto auto' }}>Offers</h2>
+		<Container>
+			<Row>
+				<Col>
+					<h2>Offers</h2>
+				</Col>
+				<Col></Col>
+				<Col>
+					<AddOffer />
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<Table
+						variant='default'
+						style={{ width: '100%', margin: '20px auto' }}
+						striped
+						bordered
+						responsive
+					>
+						<thead>
+							<tr>
+								{keys.map((heading) => {
+									return <td key={heading}>{heading}</td>;
+								})}
+							</tr>
+						</thead>
+						<tbody>
+							{offers.length > 0 &&
+								offers.map((offer) => {
+									return (
+										<tr key={offer.offerId}>
+											{/* <td>{offer.companyName}</td> */}
+											<td>{offer.dateRecieved}</td>
+											<td>{offer.numOfMonthsJobSearching}</td>
+											<td>{offer.yearsOfCodingExp}</td>
+											<td>${offer.baseSalary}</td>
+											<td>${offer.bonus}</td>
+											{/* <td>{offer.equity}</td> */}
+											<td>{offer.remote}</td>
+											<td>{offer.sizeOfCompany}</td>
+											<td>{offer.comments}</td>
+										</tr>
+									);
+								})}
+						</tbody>
+					</Table>
+					{error && <p>{error}</p>}
 
-			<Table
-				variant='default'
-				style={{ width: '100%', margin: '20px auto' }}
-				striped
-				bordered
-				responsive
-			>
-				<thead>
-					<tr>
-						{keys.map((heading) => {
-							return <td key={heading}>{heading}</td>;
-						})}
-					</tr>
-				</thead>
-				<tbody>
-					{offers.length > 0 &&
-						offers.map((offer) => {
-							return (
-								<tr key={offer.offerId}>
-									{/* <td>{offer.companyName}</td> */}
-									<td>{offer.dateRecieved}</td>
-									<td>{offer.numOfMonthsJobSearching}</td>
-									<td>{offer.yearsOfCodingExp}</td>
-									<td>${offer.baseSalary}</td>
-									<td>${offer.bonus}</td>
-									{/* <td>{offer.equity}</td> */}
-									<td>{offer.remote}</td>
-									<td>{offer.sizeOfCompany}</td>
-									<td>{offer.comments}</td>
-								</tr>
-							);
-						})}
-				</tbody>
-			</Table>
-			{error && <p>{error}</p>}
-
-			<h2 style={{ textAlign: 'center', margin: '20px auto auto' }}>
-				Averages
-			</h2>
-			<Table
-				variant='default'
-				style={{ width: '100%', margin: '20px auto' }}
-				striped
-				bordered
-				responsive
-			>
-				<thead>
-					<tr>
-						{avgkeys.map((heading) => {
-							return <td key={heading}>{heading}</td>;
-						})}
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{avgMonths}</td>
-						<td>{avgYearsExp}</td>
-						<td>{avgBase}</td>
-						<td>{avgBonus}</td>
-					</tr>
-				</tbody>
-			</Table>
-		</div>
+					<h2>Averages</h2>
+					<Table
+						variant='default'
+						style={{ width: '100%', margin: '20px auto' }}
+						striped
+						bordered
+						responsive
+					>
+						<thead>
+							<tr>
+								{avgkeys.map((heading) => {
+									return <td key={heading}>{heading}</td>;
+								})}
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{avgMonths}</td>
+								<td>{avgYearsExp}</td>
+								<td>{avgBase}</td>
+								<td>{avgBonus}</td>
+							</tr>
+						</tbody>
+					</Table>
+				</Col>
+			</Row>
+		</Container>
 	);
 };
 
@@ -168,23 +177,27 @@ const DisplayChartData = ({ offers }) => {
 	const combo = [...keys, ...data];
 
 	return (
-		<div>
-			<h1>Chart Data</h1>
-			<Chart
-				width={'600px'}
-				height={'400px'}
-				chartType='ScatterChart'
-				loader={<div>Loading Chart</div>}
-				data={combo}
-				options={{
-					title: 'Months searching and Salary Comparison',
-					hAxis: { title: 'Months Searching' },
-					vAxis: { title: 'Base Salary' },
-					legend: 'none',
-				}}
-				rootProps={{ 'data-testid': '1' }}
-			/>
-		</div>
+		<Container>
+			<Row>
+				<Col>
+					<h2>Chart Data</h2>
+					<Chart
+						width={'600px'}
+						height={'400px'}
+						chartType='ScatterChart'
+						loader={<div>Loading Chart</div>}
+						data={combo}
+						options={{
+							title: 'Months searching and Salary Comparison',
+							hAxis: { title: 'Months Searching' },
+							vAxis: { title: 'Base Salary' },
+							legend: 'none',
+						}}
+						rootProps={{ 'data-testid': '1' }}
+					/>
+				</Col>
+			</Row>
+		</Container>
 	);
 };
 

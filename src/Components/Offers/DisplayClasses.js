@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
-import { Spinner, Container } from 'react-bootstrap';
+import { Spinner, Container, ListGroup } from 'react-bootstrap';
 import AddClasses from './AddClasses';
 
 class ListClasses extends Component {
@@ -58,21 +58,29 @@ class ListClasses extends Component {
 }
 
 const ClassesList = ({ classes, id, loading }) => {
+	if (classes.length) {
+		console.log(new Date(classes[0].graduationDate));
+	}
+
 	return (
-		<div>
+		<ListGroup>
 			{loading && <Spinner animation='border' variant='primary' />}
 			{classes.length ? (
-				classes.map((classObj) => (
-					<li key={classObj.classId}>
-						<Link to={`/bootcamps/${id}/${classObj.classId}`}>
-							{classObj.className} | {classObj.graduationDate}
-						</Link>
-					</li>
-				))
+				classes
+					.sort((a, b) => b.graduationDate - a.graduationDate)
+					.map((classObj) => (
+						<ListGroup horizontal>
+							<ListGroup.Item action variant='light' key={classObj.classId}>
+								<Link to={`/bootcamps/${id}/${classObj.classId}`}>
+									{classObj.className} | {classObj.graduationDate}
+								</Link>
+							</ListGroup.Item>
+						</ListGroup>
+					))
 			) : (
 				<p>No Classes Yet!</p>
 			)}
-		</div>
+		</ListGroup>
 	);
 };
 

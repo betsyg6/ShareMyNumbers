@@ -59,7 +59,7 @@ class AddClassFormBase extends Component {
 	render() {
 		return (
 			<div>
-				<Button onClick={this.handleShow}>Add a Bootcamp</Button>
+				<Button onClick={this.handleShow}>Add a Class</Button>
 				<Modal show={this.state.show} onHide={this.handleClose}>
 					<Modal.Header>Add Class</Modal.Header>
 					<Modal.Body>

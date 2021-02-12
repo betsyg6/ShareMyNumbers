@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
-import { Spinner, Form } from 'react-bootstrap';
+import { Spinner, Form, Container, Col, Row, ListGroup } from 'react-bootstrap';
 
 class ListBootcamps extends Component {
 	constructor(props) {
@@ -14,7 +14,6 @@ class ListBootcamps extends Component {
 
 	componentDidMount() {
 		this.setState({ loading: true });
-
 		this.props.firebase.bootcamps().on('value', (snapshot) => {
 			const bootcampsObj = snapshot.val();
 			if (bootcampsObj) {
@@ -39,10 +38,18 @@ class ListBootcamps extends Component {
 		const { loading, bootcamps } = this.state;
 
 		return (
-			<div>
-				<h2>All Bootcamps</h2>
-				<BootcampsList bootcamps={bootcamps} loading={loading} />
-			</div>
+			<Container>
+				<Row>
+					<Col>
+						<h2>All Bootcamps</h2>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<BootcampsList bootcamps={bootcamps} loading={loading} />
+					</Col>
+				</Row>
+			</Container>
 		);
 	}
 	ß;
@@ -68,23 +75,29 @@ const BootcampsList = ({ bootcamps, loading }) => {
 					/>
 				</Form.Group>
 			</Form>
-			{bootcamps.length && !loading ? (
-				bootcamps
-					.filter((bootcamp) => {
-						return bootcamp.bootcampName.includes(filter);
-					})
-					.map((bootcamp) => {
-						return (
-							<li key={bootcamp.bootcampId}>
-								<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
-									{bootcamp.bootcampName}
-								</Link>
-							</li>
-						);
-					})
-			) : (
-				<Spinner animation='border' variant='primary' />
-			)}
+			<ListGroup>
+				{bootcamps.length && !loading ? (
+					bootcamps
+						.filter((bootcamp) => {
+							return bootcamp.bootcampName.includes(filter);
+						})
+						.map((bootcamp) => {
+							return (
+								<ListGroup.Item
+									action
+									variant='light'
+									key={bootcamp.bootcampId}
+								>
+									<Link to={`/bootcamps/${bootcamp.bootcampId}`}>
+										{bootcamp.bootcampName}
+									</Link>
+								</ListGroup.Item>
+							);
+						})
+				) : (
+					<Spinner animation='border' variant='primary' />
+				)}
+			</ListGroup>
 		</div>
 	);
 };
