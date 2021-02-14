@@ -96,11 +96,8 @@ const OffersList = ({ offers, error }) => {
 				<Col>
 					<h2>Offers</h2>
 				</Col>
-				<Col></Col>
-				<Col>
-					<AddOffer />
-				</Col>
 			</Row>
+
 			<Row>
 				<Col>
 					<Table
@@ -139,6 +136,11 @@ const OffersList = ({ offers, error }) => {
 					</Table>
 					{error && <p>{error}</p>}
 
+					<Row>
+						<Col>
+							<AddOffer />
+						</Col>
+					</Row>
 					<h2>Averages</h2>
 					<Table
 						variant='default'
@@ -192,10 +194,14 @@ const DisplayChartData = ({ offers }) => {
 		<Container>
 			<Row>
 				<Col>
-					<h2>Chart Data</h2>
+					<h2>Data Visualization</h2>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
 					<Chart
-						width={'600px'}
-						height={'400px'}
+						width={'500px'}
+						height={'300px'}
 						chartType='ScatterChart'
 						loader={<div>Loading Chart</div>}
 						data={combo}

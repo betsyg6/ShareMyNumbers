@@ -6,6 +6,7 @@ import * as ROUTES from '../../Constants/routes';
 import ListOffers from '../Offers/DisplayOffers';
 import BootcampsMain from '../Offers/BootcampsMain';
 import ListClasses from '../Offers/DisplayClasses';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const App = () => {
 	return (

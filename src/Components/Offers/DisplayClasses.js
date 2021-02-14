@@ -49,7 +49,7 @@ class ListClasses extends Component {
 
 		return (
 			<Container>
-				<h2>All classes</h2>
+				<h2>All Classes</h2>
 				<ClassesList classes={classes} id={id} loading={loading} />
 				<AddClasses />
 			</Container>

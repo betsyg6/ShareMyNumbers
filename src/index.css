@@ -26,9 +26,7 @@ ul {
 	margin: auto;
 }
 
-/* .col {
-	display: flex;
-	justify-content: center;
-	/* text-align: center; */
-/* flex-direction: column;
-} */
+h2,
+p {
+	text-align: center;
+}

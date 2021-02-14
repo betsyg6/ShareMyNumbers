@@ -68,7 +68,7 @@ class AddOfferFormBase extends Component {
 	render() {
 		return (
 			<div>
-				<Button variant='outline-info' onClick={this.handleShow}>
+				<Button variant='primary' onClick={this.handleShow}>
 					Add an Offer
 				</Button>
 

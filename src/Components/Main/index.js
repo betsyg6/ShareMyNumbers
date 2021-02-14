@@ -8,20 +8,20 @@ const Main = () => {
 		<Container>
 			<Row>
 				<Col>
-					<h1>Welcome to Share My Numbers</h1>
+					<h2>Welcome to Share My Numbers</h2>
 					<p>
 						Share My Numbers is a place for bootcamp grads to share their offers
 						anonymously.
 					</p>
 				</Col>
 			</Row>
-			<Row>
+			{/* <Row>
 				<Col>
-					<Button href={ROUTES.BOOTCAMPS} variant='outline-info'>
+					<Button href={ROUTES.BOOTCAMPS} variant='outline-info' className='button'>
 						Enter
 					</Button>
 				</Col>
-			</Row>
+			</Row> */}
 
 			<Row>
 				<Col>

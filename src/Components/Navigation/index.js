@@ -3,7 +3,7 @@ import * as ROUTES from '../../Constants/routes';
 import { Nav, Navbar } from 'react-bootstrap';
 
 const Navigation = () => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='dark' variant='dark' expand='md'>
 		<Navbar.Brand>Share My Numbers</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Nav>
