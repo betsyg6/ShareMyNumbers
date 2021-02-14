@@ -9,10 +9,7 @@ const Main = () => {
 			<Row>
 				<Col>
 					<h2>Welcome to Share My Numbers</h2>
-					<p>
-						Share My Numbers is a place for bootcamp grads to share their offers
-						anonymously.
-					</p>
+					<p>A place for bootcamp grads to share their offers anonymously.</p>
 				</Col>
 			</Row>
 			{/* <Row>
