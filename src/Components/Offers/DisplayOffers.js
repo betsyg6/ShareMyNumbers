@@ -85,11 +85,6 @@ const OffersList = ({ offers, error }) => {
 		offers.map((offer) => Number(offer.bonus)).reduce((a, b) => a + b, 0) /
 			length || 0;
 
-	const avgYearsExp =
-		offers
-			.map((offer) => Number(offer.yearsOfCodingExp))
-			.reduce((a, b) => a + b, 0) / length || 0;
-
 	return (
 		<Container>
 			<Row>
@@ -122,7 +117,7 @@ const OffersList = ({ offers, error }) => {
 											{/* <td>{offer.companyName}</td> */}
 											<td>{offer.dateRecieved}</td>
 											<td>{offer.numOfMonthsJobSearching}</td>
-											<td>{offer.yearsOfCodingExp}</td>
+
 											<td>${Number(offer.baseSalary).toLocaleString()}</td>
 											<td>${Number(offer.bonus).toLocaleString()}</td>
 											{/* <td>{offer.equity}</td> */}
@@ -159,7 +154,6 @@ const OffersList = ({ offers, error }) => {
 						<tbody>
 							<tr>
 								<td>{avgMonths}</td>
-								<td>{avgYearsExp}</td>
 								<td>${Number(avgBase).toLocaleString()}</td>
 								<td>${Number(avgBonus).toLocaleString()}</td>
 							</tr>
