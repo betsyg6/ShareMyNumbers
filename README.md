@@ -4,9 +4,13 @@ Did you know that women of all races earn 82 cents for every $1 earned by men of
 
 As coding bootcamp graduates and women/nonbinary people, we've entered a new industry and salary packages/negotiations may be new to us. By anonymously sharing information and being transparent regarding salary offers we've received, we can all work to lift each other up and close the wage gap :muscle: . Enter Share My Numbers.
 
+<img src="https://media.giphy.com/media/AtpLC0LZFeEnWMsa1V/giphy.gif" alt="demo" width="60%">
+
 Share My Numbers is an app that allows coding bootcamp graduates to share their offers anonymously. To create this app, I used React, Firebase, and React Bootstrap.
 
-Check out the site (still in progress) [here](https://share-my-numbers.herokuapp.com/)!
+<img src="https://media.giphy.com/media/JB5dWoiwdSBrbXuuC0/giphy.gif" alt='demo1' width='60%'>
+
+Check out the site [here](https://share-my-numbers.herokuapp.com/) or view the [demo](https://youtu.be/cfJ5FI2Aco0)!
 
 # More Wage Gap Info
 
