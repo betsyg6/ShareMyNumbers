@@ -57,7 +57,6 @@ const OffersList = ({ offers, error }) => {
 		// 'Company Name',
 		'Date Recieved',
 		'Number of Months Job Searching',
-		'Years of Coding Experience',
 		'Base Salary',
 		'Bonus',
 		// 'Equity',
@@ -65,12 +64,7 @@ const OffersList = ({ offers, error }) => {
 		'Size of Company',
 		'Comments',
 	];
-	let avgkeys = [
-		'Number of Months Job Searching',
-		'Years of Coding Experience',
-		'Base Salary',
-		'Bonus',
-	];
+	let avgkeys = ['Number of Months Job Searching', 'Base Salary', 'Bonus'];
 	const length = offers.length;
 	const avgBase =
 		offers.map((offer) => Number(offer.baseSalary)).reduce((a, b) => a + b, 0) /
